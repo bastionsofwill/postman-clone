@@ -28,6 +28,8 @@ form.addEventListener('submit', e => {
         method: document.querySelector('[data-method]').value,
         params: keyValuePairsToObjects(queryParamsContainer),
         headers: keyValuePairsToObjects(requestHeadersContainer)
+    }).then(response => {
+        console.log(response)
     })
 })
 
@@ -44,5 +46,8 @@ function keyValuePairsToObjects(container) {
     return [...pairs].reduce((data, pair) => {
         const key = pair.querySelector('[data-key]').value
         const value = pair.querySelector('[data-value]').value
-    })
+
+        if (key === '') return data   
+        return { ...data, [key]: value }
+    }, {})
 }
