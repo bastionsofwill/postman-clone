@@ -9,6 +9,7 @@ const queryParamsContainer = document.querySelector('[data-query-params]')
 const requestHeadersContainer = document.querySelector('[data-request-headers]')
 const keyValueTemplate = document.querySelector('[data-key-value-template]')
 const responseHeadersContainer = document.querySelector("[data-response-headers]")
+
 document
     .querySelector('[data-add-query-param-btn]')
     .addEventListener("click", () => {
@@ -67,6 +68,7 @@ form.addEventListener('submit', e => {
         console.log(response)
     })
 })
+
 function updateResponseHeaders(headers) {
     responseHeadersContainer.innerHTML = ""
     Object.entries(headers).forEach(([key, value]) => {
@@ -78,6 +80,7 @@ function updateResponseHeaders(headers) {
         responseHeadersContainer.append(valueElement)
     })
 }
+
 function updateResponseDetails(response) {
    document.querySelector('[data-status]').textContent = response.status
    document.querySelector('[data-time]').textContent = response.customData.time
